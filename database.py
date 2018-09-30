@@ -1,5 +1,7 @@
 import sqlite3
 
+import config
+
 # start database's tables names
 db_name = 'pixel.db'
 users_t = 'users'
@@ -19,7 +21,7 @@ def close_db(conn, cursor):
 
 def create_users_table():
     conn, cursor = open_db(db_name)
-    query = f"CREATE TABLE {users_t} (id varchar, name varchar, age varchar, sex varchar)"
+    query = f"CREATE TABLE {users_t} (id varchar, name varchar, age varchar, gender varchar, interest varchar)"
     try:
         cursor.execute(query)
     except:
@@ -35,6 +37,7 @@ def create_status_table():
         pass
     close_db(conn, cursor)
 
+# User's main info
 def add_user(message):
     conn, cursor = open_db(db_name)
     check = f"SELECT * FROM {users_t} WHERE id='{message.chat.id}'"
@@ -46,6 +49,27 @@ def add_user(message):
 
 
 
+
+def set_name(message):
+    conn, cursor = open_db(db_name)
+    query = f"UPDATE {users_t} SET name='{message.text}' WHERE id='{message.chat.id}'"
+    cursor.execute(query)
+    close_db(conn, cursor)
+def set_age(message):
+    conn, cursor = open_db(db_name)
+    query = f"UPDATE {users_t} SET age='{message.text}' WHERE id='{message.chat.id}'"
+    cursor.execute(query)
+    close_db(conn, cursor)
+def set_gender(message):
+    conn, cursor = open_db(db_name)
+    query = f"UPDATE {users_t} SET gender='{message.text}' WHERE id='{message.chat.id}'"
+    cursor.execute(query)
+    close_db(conn, cursor)
+def set_interest(message):
+    conn, cursor = open_db(db_name)
+    query = f"UPDATE {users_t} SET interest='{message.text}' WHERE id='{message.chat.id}'"
+    cursor.execute(query)
+    close_db(conn, cursor)
 
 def set_status(message, status):
     conn, cursor = open_db(db_name)
@@ -66,7 +90,7 @@ def get_status(message):
         return result
     except:
         pass
-    return '0'
+    return config.wait
 
 
 
