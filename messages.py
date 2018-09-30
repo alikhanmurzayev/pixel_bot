@@ -14,6 +14,8 @@ interest_count = 'Числа'
 interest_paint = 'Рисование'
 interest_languages = 'Языки'
 
+finish_reg_message = 'Отлично!'
+
 help_message = 'Вот, что ты можешь сделать'
 take_test = 'Пройти тест'
 find_friends = 'Найти друзей!'

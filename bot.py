@@ -14,6 +14,9 @@ def send_help(message):
     user_markup.row(messages.find_friends)
     bot.send_message(message.chat.id, messages.help_message, reply_markup=user_markup)
 
+def take_test(message):
+    print('hello')
+
 @bot.message_handler(commands=['start'])
 def start(message):
     database.add_user(message)
@@ -46,12 +49,18 @@ def text_messages(message):
     elif status == config.interest:
         database.set_interest(message)
         database.set_status(message, config.wait)
+        bot.send_message(message.chat.id, messages.finish_reg_message)
         send_help(message)
     elif status == config.wait:
         if message.text == messages.take_test:
+            database.set_status(message, config.take_test)
+            database.update_tests_table()
             bot.send_message(message.chat.id, 'прохождение теста...')
         elif message.text == messages.find_friends:
+            database.set_status(message, config.find_friends)
             bot.send_message(message.chat.id, 'поиск друзей...')
+    elif status == config.take_test:
+        print('test...')
 
 
 bot.polling(none_stop=True)
