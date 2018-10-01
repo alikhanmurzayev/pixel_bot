@@ -20,5 +20,10 @@ help_message = 'Вот, что ты можешь сделать'
 take_test = 'Пройти тест'
 find_friends = 'Найти друзей!'
 
+test_info_message = 'Необходимо пройти тест № '
+
+correct_answer_message = 'Верно'
+incorrect_answer_message = 'Неверно'
+
 
 

@@ -140,6 +140,9 @@ def update_tests_table():
 
 
 
+
+
+
 create_users_table()
 create_status_table()
 create_tests_table()
