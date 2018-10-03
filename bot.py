@@ -15,9 +15,6 @@ def send_help(message):
     user_markup.row(messages.find_friends)
     bot.send_message(message.chat.id, messages.help_message, reply_markup=user_markup)
 
-def take_test(message):
-    print('hello')
-
 def send_question(message):
     conn, cursor = database.open_db(database.db_name)
     query = f"SELECT test_id, question_number, score FROM {database.status_t} WHERE id='{message.chat.id}'"
@@ -127,12 +124,11 @@ def text_messages(message):
             database.set_status(message, config.take_test)
             select_test(message)
         elif message.text == messages.find_friends:
-            database.set_status(message, config.find_friends)
-            bot.send_message(message.chat.id, 'поиск друзей...')
+            #database.set_status(message, config.find_friends)
+            bot.send_message(message.chat.id, 'Режим поиска друзей находится в разрботке.')
+            send_help(message)
     elif status == config.take_test:
         send_question(message)
-
-
 
 
 
