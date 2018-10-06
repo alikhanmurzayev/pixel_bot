@@ -139,7 +139,14 @@ def update_tests_table():
     close_db(conn, cursor)
 
 
-
+def check_reg(message):
+    conn, cursor = open_db(db_name)
+    check = f"SELECT * FROM {users_t} WHERE id='{message.chat.id}'"
+    result = cursor.execute(check).fetchall()
+    if len(result) == 0:
+        return False
+    else:
+        return True
 
 
 

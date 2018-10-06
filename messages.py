@@ -1,4 +1,5 @@
 start_message = 'Привет!'
+force_start = 'Начните с команды "/start"'
 
 name_message = 'Как тебя зовут?'
 age_message = 'Сколько тебе лет?'
